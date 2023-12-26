@@ -6,7 +6,7 @@ using UnityEngine;
 //
 // Pong [Atari 1972] v2019.02.24
 //
-// v2023.04.05
+// v2023.12.26
 //
 
 public class GameController : MonoBehaviour
@@ -20,8 +20,9 @@ public class GameController : MonoBehaviour
     public Transform player2Goal;
 
     // game arena boundaries
-    public const float UPPER_BOUNDARY = 6.875f;
-    public const float LOWER_BOUNDARY = -6.875f;
+    //public const float UPPER_BOUNDARY = 6.875f;
+    //public const float LOWER_BOUNDARY = -6.875f;
+    
     public const float CENTRE_COURT = 0f;
 
 
@@ -32,6 +33,10 @@ public class GameController : MonoBehaviour
     public const int STOPPED = 0;
     public const int UP = 1;
     public const int DOWN = -1;
+
+    // direction of ball
+    //public const int RIGHT = 1;
+    //public const int LEFT = -1;
 
     // player scores
     public int player1Score;
@@ -59,15 +64,18 @@ public class GameController : MonoBehaviour
     //private const float DIFFICULTY_B_HEIGHT = 0.4f;
 
     public const int PLAYER_ONE = 1;
+
     public const int PLAYER_TWO = 2;
 
     public const int START_SCORE = 0;
+
     private const int WINNING_SCORE = 11;
     //private const int GAMEOVER_SCORE = 0;
 
 
-    [HideInInspector] public int gameNumberSelected;
-    [HideInInspector] public int numberOfPlayers;
+    //[HideInInspector] public int gameNumberSelected;
+
+    //[HideInInspector] public int numberOfPlayers;
 
 
     //[Header("Game State Flags")]
@@ -78,6 +86,7 @@ public class GameController : MonoBehaviour
     //public bool inPawzMode;
 
     [HideInInspector] public bool canPlay;
+    
     [HideInInspector] public bool gameOver;
 
     [HideInInspector] public bool twoPlayer;
