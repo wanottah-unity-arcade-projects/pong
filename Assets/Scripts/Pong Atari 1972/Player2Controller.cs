@@ -4,7 +4,7 @@ using UnityEngine;
 //
 // Pong [Atari 1972] v2019.02.24
 //
-// v2023.04.05
+// v2023.12.26
 //
 
 public class Player2Controller : MonoBehaviour
@@ -13,27 +13,37 @@ public class Player2Controller : MonoBehaviour
 
     public Transform paddleTransform;
 
+    public Rigidbody2D paddleRigidbody;
+
     // speed of paddle
-    [HideInInspector] public float paddleSpeed;
-    [HideInInspector] public float paddleDirection;
+    private float paddleSpeed;
+
+    //[HideInInspector] public float paddleDirection;
+
+    private Vector2 paddleDirection;
 
     // player 2 start position
     private float paddlePositionX;
+
     private float paddlePositionY;
+
+    private float paddlePositionOffset;
 
     private Vector2 paddleStartPosition;
     //private float player2SpritePositionX;
     //private float player2SpritePositionY;
 
     // ai check
-    [HideInInspector] public bool player2IsComputer;
+    public bool player2IsComputer;
 
     // player check
-    [HideInInspector] public bool isPlayer2;
+    private bool isPlayer2;
 
 
     private void Awake()
     {
+        //paddleRigidbody = GetComponent<Rigidbody2D>();
+
         player2 = this;
     }
 
@@ -44,6 +54,12 @@ public class Player2Controller : MonoBehaviour
     }
 
 
+    private void FixedUpdate()
+    {
+        paddleRigidbody.velocity = paddleDirection * paddleSpeed;
+    }
+
+
     public void Initialise()
     {
         // direction of paddle
@@ -51,7 +67,10 @@ public class Player2Controller : MonoBehaviour
 
         // reset player 2 start position
         paddlePositionX = 7.8f;
+
         paddlePositionY = 0f;
+
+        paddlePositionOffset = 0.5f;
 
         paddleStartPosition = new Vector2(paddlePositionX, paddlePositionY);
 
@@ -60,12 +79,12 @@ public class Player2Controller : MonoBehaviour
         // speed of paddle
         if (player2IsComputer)
         {
-            paddleSpeed = 5f;
+            paddleSpeed = 15f; //5f;
         }
 
         else
         {
-            paddleSpeed = 6f;
+            paddleSpeed = 5f;
         }
     }
 
@@ -96,22 +115,29 @@ public class Player2Controller : MonoBehaviour
     // player 2
     private void KeyboardController()
     {
-        paddleDirection = GameController.STOPPED;
+        //paddleDirection = GameController.STOPPED;
 
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.P))
         {
-            paddleDirection = GameController.UP;
+            //paddleDirection = GameController.UP;
 
             MoveUp();
         }
 
 
-        if (Input.GetKey(KeyCode.L))
+        else if (Input.GetKey(KeyCode.L))
         {
-            paddleDirection = GameController.DOWN;
+            //paddleDirection = GameController.DOWN;
 
             MoveDown();
         }
+
+        else
+        {
+            paddleDirection = new Vector2(paddlePositionX, GameController.STOPPED);
+        }
+
+        //paddleDirection = new Vector2(paddlePositionX, Input.GetAxisRaw("Vertical"));
     }
 
 
@@ -120,28 +146,32 @@ public class Player2Controller : MonoBehaviour
         // get the horizontal distance of the ball from the paddle
         //float ballDistanceFromPaddle = Mathf.Abs(BallController.ballController.ballTransform.position.x - paddleTransform.position.x);
 
-        paddleDirection = GameController.STOPPED;
+        //paddleDirection = GameController.STOPPED;
 
-        
-
-        if (paddleTransform.position.y < BallController.ballController.ballTransform.position.y)
+        //if (paddleTransform.position.y + paddlePositionOffset < BallController.ballController.ballTransform.position.y)
+        if (BallController.ballController.ballTransform.position.y > paddleTransform.position.y + paddlePositionOffset)
         {
-            paddleDirection = GameController.UP;
+            //paddleDirection = GameController.UP;
 
             MoveUp();
         }
 
-
-        if (paddleTransform.position.y > BallController.ballController.ballTransform.position.y)
+        //if (paddleTransform.position.y + paddlePositionOffset > BallController.ballController.ballTransform.position.y)
+        else if (BallController.ballController.ballTransform.position.y < paddleTransform.position.y - paddlePositionOffset)
         {
-            paddleDirection = GameController.DOWN;
+            //paddleDirection = GameController.DOWN;
 
             MoveDown();
+        }
+
+        else
+        {
+            paddleDirection = new Vector2(paddlePositionX, GameController.STOPPED);
         }
     }
 
 
-    private void MoveUp()
+    /*private void MoveUp()
     {
         if (paddleTransform.position.y < GameController.UPPER_BOUNDARY)
         {
@@ -182,6 +212,18 @@ public class Player2Controller : MonoBehaviour
                     new Vector3(paddleTransform.position.x, paddleTransform.position.y - paddleSpeed * Time.deltaTime, paddleTransform.position.z);
             }
         }
+    }*/
+
+
+    private void MoveUp()
+    {
+        paddleDirection = new Vector2(paddlePositionX, GameController.UP);
+    }
+
+
+    private void MoveDown()
+    {
+        paddleDirection = new Vector2(paddlePositionX, GameController.DOWN);
     }
 
 

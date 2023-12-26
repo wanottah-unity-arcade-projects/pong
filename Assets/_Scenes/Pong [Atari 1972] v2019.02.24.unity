@@ -810,6 +810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809646285}
   - component: {fileID: 809646287}
+  - component: {fileID: 809646288}
   - component: {fileID: 809646286}
   m_Layer: 0
   m_Name: Paddle
@@ -911,6 +912,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &809646288
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809646284}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 5
 --- !u!1 &821250413
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,11 +963,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballTransform: {fileID: 2793729918777735378}
-  ballRigidbody: {fileID: 0}
+  ballRigidbody: {fileID: 2793729918777735389}
   ballSpeed: 0
   ballBounceSpeed: 0
   ballSpeedIncrease: 0
   maxBallSpeed: 0
+  ballHitCounter: 0
 --- !u!4 &821250415
 Transform:
   m_ObjectHideFlags: 0
@@ -2227,7 +2250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1663844468}
   m_Layer: 0
-  m_Name: v2023.02.11
+  m_Name: v2023.12.26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2472,6 +2495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1870645481}
   - component: {fileID: 1870645483}
+  - component: {fileID: 1870645484}
   - component: {fileID: 1870645482}
   m_Layer: 0
   m_Name: Paddle
@@ -2573,6 +2597,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1870645484
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870645480}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 5
 --- !u!1 &1887766794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,8 +2849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paddleTransform: {fileID: 1870645481}
-  paddleSpeed: 0
-  paddleDirection: 0
+  paddleRigidbody: {fileID: 1870645484}
   player1IsComputer: 0
 --- !u!61 &2793729918777735377
 BoxCollider2D:
@@ -2998,10 +3042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paddleTransform: {fileID: 809646285}
-  paddleSpeed: 0
-  paddleDirection: 0
+  paddleRigidbody: {fileID: 809646288}
   player2IsComputer: 0
-  isPlayer2: 0
 --- !u!1 &8220535074932489739
 GameObject:
   m_ObjectHideFlags: 0

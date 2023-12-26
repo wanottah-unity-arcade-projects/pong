@@ -4,7 +4,7 @@ using UnityEngine;
 //
 // Pong [Atari 1972] v2019.02.24
 //
-// v2021.11.06
+// v2023.12.26
 //
 
 public class CollisionController : MonoBehaviour
@@ -48,14 +48,16 @@ public class CollisionController : MonoBehaviour
             if (collidingObject.gameObject.CompareTag("Player 1") || collidingObject.gameObject.CompareTag("Player 2"))
             {
                 // play a sound
-                AudioController.audioController.PlayAudioClip("Paddle Bounce");
+                AudioController.audioController.PlayAudioClip("Paddle Bounce");           
+
+                BallController.ballController.PaddleBounce(collidingObject.transform);
             }
         }
     }
 
 
     // if ball has collided with the paddle
-    private void OnCollisionExit2D(Collision2D collidingObject)
+    /*private void OnCollisionExit2D(Collision2D collidingObject)
     {
         if (collidingObject.gameObject.CompareTag("Player 1"))
         {
@@ -111,7 +113,7 @@ public class CollisionController : MonoBehaviour
                         Player2Controller.player2.paddleDirection * BallController.ballController.ballBounceSpeed);
             }
         }
-    }
+    }*/
 
 
 } // end of class
