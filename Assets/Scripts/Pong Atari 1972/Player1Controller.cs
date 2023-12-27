@@ -63,7 +63,7 @@ public class Player1Controller : MonoBehaviour
         //paddleDirection = GameController.STOPPED;
 
         // reset player 1 start position
-        paddlePositionX = -7.8f;
+        paddlePositionX = -9.3f;
 
         paddlePositionY = 0f;
 
@@ -79,12 +79,12 @@ public class Player1Controller : MonoBehaviour
         // speed of paddle
         if (player1IsComputer)
         {
-            paddleSpeed = 15f; //5f;
+            paddleSpeed = 7f;
         }
 
         else
         {
-            paddleSpeed = 5f;
+            paddleSpeed = 10f;
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 //
 // Pong [Atari 1972] v2019.02.24
 //
-// v2023.12.26
+// v2023.12.27
 //
 
 public class CollisionController : MonoBehaviour
@@ -14,6 +14,9 @@ public class CollisionController : MonoBehaviour
     {
         if (!GameController.gameController.inAttractMode)
         {
+            // disable the ball
+            BallController.ballController.ballTransform.gameObject.SetActive(false);
+
             // play the 'goalScored' sound
             AudioController.audioController.PlayAudioClip("Goal Scored");
         }
@@ -54,66 +57,6 @@ public class CollisionController : MonoBehaviour
             }
         }
     }
-
-
-    // if ball has collided with the paddle
-    /*private void OnCollisionExit2D(Collision2D collidingObject)
-    {
-        if (collidingObject.gameObject.CompareTag("Player 1"))
-        {
-            // if the ball's movement speed is less than its maximum speed
-            if (BallController.ballController.ballRigidbody.velocity.magnitude < BallController.ballController.maxBallSpeed)
-            {
-                BallController.ballController.ballRigidbody.velocity =
-
-                    new Vector2(
-                        BallController.ballController.ballRigidbody.velocity.x * 
-                        BallController.ballController.ballSpeedIncrease, 
-                        BallController.ballController.ballRigidbody.velocity.y + 
-                        Player1Controller.player1.paddleDirection * BallController.ballController.ballBounceSpeed);
-            }
-
-
-            // otherwise, just change the bounce speed of the ball
-            else
-            {
-                BallController.ballController.ballRigidbody.velocity =
-
-                    new Vector2(
-                        BallController.ballController.ballRigidbody.velocity.x, 
-                        BallController.ballController.ballRigidbody.velocity.y + 
-                        Player1Controller.player1.paddleDirection * BallController.ballController.ballBounceSpeed);
-            }
-        }
-
-
-        if (collidingObject.gameObject.CompareTag("Player 2"))
-        {
-            // if the ball's movement speed is less than its maximum speed
-            if (BallController.ballController.ballRigidbody.velocity.magnitude < BallController.ballController.maxBallSpeed)
-            {
-                BallController.ballController.ballRigidbody.velocity =
-
-                    new Vector2(
-                        BallController.ballController.ballRigidbody.velocity.x *
-                        BallController.ballController.ballSpeedIncrease, 
-                        BallController.ballController.ballRigidbody.velocity.y + 
-                        Player2Controller.player2.paddleDirection * BallController.ballController.ballBounceSpeed);
-            }
-
-
-            // otherwise, just change the bounce speed of the ball
-            else
-            {
-                BallController.ballController.ballRigidbody.velocity =
-
-                    new Vector2(
-                        BallController.ballController.ballRigidbody.velocity.x, 
-                        BallController.ballController.ballRigidbody.velocity.y + 
-                        Player2Controller.player2.paddleDirection * BallController.ballController.ballBounceSpeed);
-            }
-        }
-    }*/
 
 
 } // end of class
