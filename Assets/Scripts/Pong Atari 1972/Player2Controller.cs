@@ -4,7 +4,7 @@ using UnityEngine;
 //
 // Pong [Atari 1972] v2019.02.24
 //
-// v2023.12.26
+// v2023.12.27
 //
 
 public class Player2Controller : MonoBehaviour
@@ -66,7 +66,7 @@ public class Player2Controller : MonoBehaviour
         //player2SpriteDirection = GameController.STOPPED;
 
         // reset player 2 start position
-        paddlePositionX = 7.8f;
+        paddlePositionX = 9.3f;
 
         paddlePositionY = 0f;
 
@@ -79,12 +79,12 @@ public class Player2Controller : MonoBehaviour
         // speed of paddle
         if (player2IsComputer)
         {
-            paddleSpeed = 15f; //5f;
+            paddleSpeed = 7f;
         }
 
         else
         {
-            paddleSpeed = 5f;
+            paddleSpeed = 10f;
         }
     }
 

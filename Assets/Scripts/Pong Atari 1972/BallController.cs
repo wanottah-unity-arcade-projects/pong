@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using UnityEngine;
 
 //
@@ -46,9 +47,11 @@ public class BallController : MonoBehaviour
 
     private float ballStartPositionY;
 
-    private float paddleLength;
+    //private float paddleLength;
 
     private float paddleCenter;
+
+    private float ballServeDelay;
 
 
 
@@ -60,14 +63,8 @@ public class BallController : MonoBehaviour
 
     public void Initialise()
     {
-        // set reference to ball's rigidbody component
-        //ballRigidbody = ballTransform.GetComponent<Rigidbody2D>();
-
         // ball speed
         ballSpeed = 2.5f;
-
-        // ball bounce speed
-        //ballBounceSpeed = 2f;
 
         // ball speed increase
         ballSpeedIncrease = 0.1f;
@@ -75,30 +72,31 @@ public class BallController : MonoBehaviour
         // maximum ball speed
         maxBallSpeed = 5f;
 
+        // number of times ball hits the paddle
         ballHitCounter = 0;
 
         ballStartPositionX = 0f;
 
         ballStartPositionY = 0f;
 
-        //yBounceOffset = 0.25f;
+        // delays the ball before serving
+        ballServeDelay = 3f;
 
-        ballTransform.gameObject.SetActive(true);
-
-        // start moving the ball      
-        startBall(ballSpeed, ballSpeed);
+        StartBall(ballSpeed, ballSpeed);      
     }
 
 
     // start moving the ball
-    private void startBall(float xBallSpeed, float yBallSpeed)
+    public void StartBall(float xBallSpeed, float yBallSpeed)
     {
         // randomise player serve
         float randomServeDirection = RandomServe(xBallSpeed);
 
         float randomBallDirection = RandomDirection(yBallSpeed);
 
-        //ballRigidbody.velocity = new Vector2(RandomServe(ballSpeed), RandomDirection(ballSpeed));
+        // activate the ball
+        ballTransform.gameObject.SetActive(true);
+
         ballRigidbody.velocity = new Vector2(randomServeDirection, randomBallDirection) * (ballSpeed + ballSpeedIncrease * ballHitCounter);
     }
 
@@ -106,16 +104,22 @@ public class BallController : MonoBehaviour
     // reset ball
     public void ResetBall(float xVelocity, float yVelocity)
     {
+        // reset ball hit counter
         ballHitCounter = 0;
 
         // reset ball position
-        //ballTransform.position = new Vector3(0, 0, 0);
         ballTransform.position = new Vector2(ballStartPositionX, ballStartPositionY);
 
-        ballTransform.gameObject.SetActive(true);
+        // start moving the ball after short delay
+        StartCoroutine(DelayBallServe(xVelocity, yVelocity));
+    }
 
-        //ballRigidbody.velocity = new Vector2(RandomServe(xVelocity), RandomDirection(yVelocity));
-        startBall(xVelocity, yVelocity);
+
+    private IEnumerator DelayBallServe(float ballSpeedX, float ballSpeedY)
+    {
+        yield return new WaitForSeconds(ballServeDelay);
+
+        StartBall(ballSpeedX, ballSpeedY);
     }
 
 
@@ -142,12 +146,6 @@ public class BallController : MonoBehaviour
     // change angle of ball when bouncing off paddle
     public void PaddleBounce(Transform paddleTransform)
     {
-        // get position of ball
-        //Vector2 ballPosition = transform.position;
-
-        // get position of paddle
-        //Vector2 paddlePosition = paddleTransform.position;
-
         // increase ball hit counter
         ballHitCounter++;
 
@@ -166,16 +164,6 @@ public class BallController : MonoBehaviour
         paddleCenter = paddleTransform.position.y;
 
         yBounceDirection = (ballTransform.position.y - paddleCenter) * Player1Controller.player1.paddleLength;
-        
-        //ballSpeed = yBounceDirection * 0.35f;
-
-        //yBounceDirection = (ballTransform.position.y - paddleTransform.position.y) / 0.75f; //paddleTransform.GetComponent<Collider2D>().bounds.size.y;
-        //Debug.Log(ballTransform.position.y + ", " + paddleTransform.position.y + ", " + paddleSize + ", " + yBounceDirection);
-        // if the ball hits the center of the paddle
-        //if (yBounceDirection == 0)
-        //{
-            //yBounceDirection = yBounceOffset;
-        //}
 
         // change angle and speed of ball
         ballRigidbody.velocity = new Vector2(xBounceDirection, yBounceDirection) * (ballSpeed + ballSpeedIncrease * ballHitCounter);
