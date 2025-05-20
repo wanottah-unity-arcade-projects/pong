@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: wanottah.com
-  productName: Pong
+  companyName: '''Arf A Bob Games'
+  productName: Pong [Atari 1972]
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -813,10 +813,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: da83c5f7-5040-43de-9839-4fe80fedb8d3
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: Pong
-  organizationId: wanottah
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -1393,7 +1393,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078390439}
-  - component: {fileID: 1078390440}
   m_Layer: 0
   m_Name: Game Cartridge
   m_TagString: Untagged
@@ -1420,24 +1419,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1078390440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078390438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ffdfe688ab9c584da5186dcb5c27494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameCartridgeDataFile: Pong
-  gameCartridgeData:
-    gameTitle: 
-    numberOfGames: 0
-    tvMode: 
-    gameData: []
 --- !u!1 &1174127915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,7 +2113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1663844468}
   m_Layer: 0
-  m_Name: v2024.04.20
+  m_Name: v2025.04.04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
