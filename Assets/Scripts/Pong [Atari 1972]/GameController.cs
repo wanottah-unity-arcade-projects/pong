@@ -6,7 +6,7 @@ using UnityEngine;
 //
 // Pong [Atari 1972] v2019.02.24
 //
-// v2023.12.26
+// v2025.01.07
 //
 
 public class GameController : MonoBehaviour
@@ -206,6 +206,14 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 StartTwoPlayer();
+            }
+        }
+
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Startup();
             }
         }
     }

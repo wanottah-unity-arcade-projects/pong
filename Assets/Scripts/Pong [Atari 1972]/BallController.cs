@@ -97,7 +97,7 @@ public class BallController : MonoBehaviour
         // activate the ball
         ballTransform.gameObject.SetActive(true);
 
-        ballRigidbody.velocity = new Vector2(randomServeDirection, randomBallDirection) * (ballSpeed + ballSpeedIncrease * ballHitCounter);
+        ballRigidbody.linearVelocity = new Vector2(randomServeDirection, randomBallDirection) * (ballSpeed + ballSpeedIncrease * ballHitCounter);
     }
 
 
@@ -125,9 +125,9 @@ public class BallController : MonoBehaviour
 
     public void FreezeBall()
     {
-        xBallVelocity = ballRigidbody.velocity.x;
+        xBallVelocity = ballRigidbody.linearVelocity.x;
 
-        yBallVelocity = ballRigidbody.velocity.y;
+        yBallVelocity = ballRigidbody.linearVelocity.y;
 
         ballRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
     }
@@ -139,7 +139,7 @@ public class BallController : MonoBehaviour
 
         ballRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        ballRigidbody.velocity = new Vector2(xBallVelocity, yBallVelocity);
+        ballRigidbody.linearVelocity = new Vector2(xBallVelocity, yBallVelocity);
     }
 
 
@@ -166,7 +166,7 @@ public class BallController : MonoBehaviour
         yBounceDirection = (ballTransform.position.y - paddleCenter) * Player1Controller.player1.paddleLength;
 
         // change angle and speed of ball
-        ballRigidbody.velocity = new Vector2(xBounceDirection, yBounceDirection) * (ballSpeed + ballSpeedIncrease * ballHitCounter);
+        ballRigidbody.linearVelocity = new Vector2(xBounceDirection, yBounceDirection) * (ballSpeed + ballSpeedIncrease * ballHitCounter);
     }
 
 
