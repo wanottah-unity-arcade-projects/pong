@@ -1,0 +1,33 @@
+.button {
+    -unity-font-definition: url("project://database/Assets/Pong/Fonts/Pong%20[Atari%201972]/SF%20Atarian%20System%20Extended.ttf?fileID=12800000&guid=5d57ca571e44beb448a3a4f3ca815649&type=3#SF Atarian System Extended");
+    font-size: 28px;
+    width: 320px;
+    height: 48px;
+    background-image: url("project://database/Assets/Pong/Sprites/Pong%20[Atari%201972]/UI/bar1.png?fileID=2800000&guid=02a7510444bf625419d311455fbc6e18&type=3#bar1");
+    -unity-slice-left: 25;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-color: rgba(255, 255, 255, 0);
+    left: 1316px;
+    position: relative;
+    top: 790px;
+    opacity: 1;
+}
+
+.button:hover {
+    -unity-font-definition: url("project://database/Assets/Pong/Fonts/Pong%20[Atari%201972]/SF%20Atarian%20System%20Extended.ttf?fileID=12800000&guid=5d57ca571e44beb448a3a4f3ca815649&type=3#SF Atarian System Extended");
+    font-size: 28px;
+    background-image: url("project://database/Assets/Pong/Sprites/Pong%20[Atari%201972]/UI/bar3.png?fileID=2800000&guid=d20bfacb7f6c86540850fba29352d021&type=3#bar3");
+    translate: 0 0;
+    transition-timing-function: ease;
+    transition-duration: 0s;
+    transition-property: translate;
+    transition-delay: 0s;
+}
+
+.button:inactive {
+    transition-property: translate;
+    transition-duration: 0s;
+}

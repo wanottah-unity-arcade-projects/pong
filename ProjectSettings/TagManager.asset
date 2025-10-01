@@ -2,13 +2,13 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags:
-  - Ball
-  - Player 1
   - Player 2
-  - Player 1 Goal
   - Player 2 Goal
+  - Player 1 Goal
+  - Player 1
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -18,14 +18,14 @@ TagManager:
   - UI
   - 
   - 
-  - Television Console
   - 
   - 
+  - Television Camera
+  - Game Camera
+  - Menu Camera
   - 
   - 
-  - 
-  - 
-  - 
+  - 1024 x 768 Camera
   - 
   - 
   - 
@@ -46,3 +46,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Television
+    uniqueID: 546695985
+    locked: 0
+  - name: Menu
+    uniqueID: 1849149523
+    locked: 0
+  m_RenderingLayers:
+  - Default

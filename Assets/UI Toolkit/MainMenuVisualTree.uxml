@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyles.uss?fileID=7433441132597879392&amp;guid=348ccb261682d4d40973db4407cfebc7&amp;type=3#MainMenuStyles" />
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:Button text="Player vs Player" name="PlayerVsPlayer" class="button" style="-unity-text-align: middle-left; padding-left: 25px; margin-bottom: 13px;" />
+        <ui:Button text="Player vs Computer" name="PlayerVsComputer" class="button" style="-unity-text-align: middle-left; padding-left: 25px; margin-bottom: 13px;" />
+        <ui:Button text="Instructions" name="Instructions" class="button" style="-unity-text-align: middle-left; padding-left: 25px; margin-bottom: 13px;" />
+        <ui:Button text="Quit" name="Quit" class="button" style="-unity-text-align: middle-left; padding-left: 25px; left: 1316px;" />
+    </ui:VisualElement>
+</ui:UXML>
